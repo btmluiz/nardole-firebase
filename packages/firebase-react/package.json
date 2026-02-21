@@ -1,0 +1,74 @@
+{
+  "name": "@nardole/firebase-react",
+  "version": "0.1.1",
+  "keywords": [
+    "firebase",
+    "react",
+    "context",
+    "hooks",
+    "provider",
+    "analytics",
+    "performance",
+    "remote-config",
+    "storage",
+    "auth",
+    "database",
+    "firestore",
+    "micro-frontend",
+    "mfe",
+    "typescript"
+  ],
+  "author": {
+    "name": "Luiz Braga",
+    "email": "me@nardole.dev"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "prepublishOnly": "yarn build"
+  },
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "module": "dist/main.js",
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/btmluiz/nardole-firebase",
+    "directory": "packages/firebase-react"
+  },
+  "peerDependencies": {
+    "@nardole/firebase-core": "*",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "devDependencies": {
+    "@nardole/firebase-core": "workspace:^",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.4",
+    "firebase": "^12.9.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "packageManager": "yarn@4.10.3"
+}
