@@ -1181,6 +1181,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@nardole/firebase-react@workspace:packages/firebase-react":
+  version: 0.0.0-use.local
+  resolution: "@nardole/firebase-react@workspace:packages/firebase-react"
+  dependencies:
+    "@nardole/firebase-core": "workspace:^"
+    "@types/react": "npm:^19.2.14"
+    "@types/react-dom": "npm:^19.2.3"
+    "@vitejs/plugin-react": "npm:^5.1.4"
+    firebase: "npm:^12.9.0"
+    typescript: "npm:^5.9.3"
+    vite: "npm:^7.3.1"
+    vite-plugin-dts: "npm:^4.5.4"
+  peerDependencies:
+    "@nardole/firebase-core": "*"
+    react: "*"
+    react-dom: "*"
+  languageName: unknown
+  linkType: soft
+
 "@nardole/monorepo@workspace:.":
   version: 0.0.0-use.local
   resolution: "@nardole/monorepo@workspace:."
@@ -2578,25 +2597,6 @@ __metadata:
   checksum: 10c0/062c5a83a9c02f53cdd6d175a37ecf8f87ea5bbff1fdfb828f04bfa021441bc7583e8ebc0872a4c1baab96221fb8a8a275a19809fb93fbc40bd69ec35634069a
   languageName: node
   linkType: hard
-
-"firebase-react@workspace:packages/firebase-react":
-  version: 0.0.0-use.local
-  resolution: "firebase-react@workspace:packages/firebase-react"
-  dependencies:
-    "@nardole/firebase-core": "workspace:^"
-    "@types/react": "npm:^19.2.14"
-    "@types/react-dom": "npm:^19.2.3"
-    "@vitejs/plugin-react": "npm:^5.1.4"
-    firebase: "npm:^12.9.0"
-    typescript: "npm:^5.9.3"
-    vite: "npm:^7.3.1"
-    vite-plugin-dts: "npm:^4.5.4"
-  peerDependencies:
-    "@nardole/firebase-core": "*"
-    react: "*"
-    react-dom: "*"
-  languageName: unknown
-  linkType: soft
 
 "firebase@npm:^12.9.0":
   version: 12.9.0

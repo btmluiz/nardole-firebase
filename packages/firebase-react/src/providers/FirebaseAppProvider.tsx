@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from "react";
+import React, { useContext, useMemo, useRef } from "react";
 import type { FirebaseApp, FirebaseOptions } from "firebase/app";
 import type { Analytics } from "firebase/analytics";
 import type { FirebasePerformance } from "firebase/performance";
@@ -48,13 +48,18 @@ export function FirebaseAppProvider({
   enableFirestore,
   children,
 }: FirebaseAppProviderProps) {
+  const firebase = useContext(FirebaseAppContext);
   const optionsRef = useRef<FirebaseOptions>(undefined);
   const nameRef = useRef<string>(undefined);
 
   const value = useMemo(() => {
-    if (optionsRef.current !== options || nameRef.current !== name) {
+    if (
+      !firebase &&
+      (optionsRef.current !== options || nameRef.current !== name)
+    ) {
       firebaseService.init(options, name, true);
     }
+
     optionsRef.current = options;
     nameRef.current = name;
 
