@@ -1,6 +1,6 @@
 {
   "name": "@nardole/firebase-core",
-  "version": "0.0.14",
+  "version": "0.0.23",
   "keywords": [
     "react",
     "mui",
@@ -23,6 +23,7 @@
   "types": "dist/main.d.ts",
   "module": "dist/main.js",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
       "types": "./dist/main.d.ts",
       "import": "./dist/main.js"
@@ -30,7 +31,8 @@
     "./*": {
       "types": "./dist/*.d.ts",
       "import": "./dist/*.js"
-    }
+    },
+    "./esm": null
   },
   "files": [
     "dist"
@@ -49,6 +51,7 @@
   },
   "devDependencies": {
     "firebase": "^12.9.0",
+    "glob": "^13.0.6",
     "typescript": "^5.9.3",
     "vite": "^8.0.0",
     "vite-plugin-dts": "^4.5.4"

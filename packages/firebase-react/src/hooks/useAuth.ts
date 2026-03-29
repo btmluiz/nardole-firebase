@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { FirebaseAppContext } from "../providers/FirebaseAppProvider.tsx";
+import { useFirebase } from "./useFirebase.ts";
 
 export function useAuth() {
-  const value = useContext(FirebaseAppContext);
+  const value = useFirebase();
 
   if (!value || value.auth === undefined) {
     throw new Error(

@@ -1,3 +1,4 @@
+export * from "./hooks/useFirebase.ts";
 export * from "./hooks/useAnalytics.ts";
 export * from "./hooks/useAuth.ts";
 export * from "./hooks/useDatabase.ts";

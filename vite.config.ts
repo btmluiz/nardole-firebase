@@ -1,8 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { resolve } from "path";
+import { extname, relative, resolve } from "path";
 import dts from "vite-plugin-dts";
-import { peerDependencies } from "./package.json";
+import { globSync } from "fs";
+import { fileURLToPath } from "url";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -15,18 +16,16 @@ export default defineConfig({
       entry: resolve(process.cwd(), "lib/main.ts"),
       formats: ["es"],
     },
-    rollupOptions: {
-      external: [...Object.keys(peerDependencies), "react/jsx-runtime"],
-      // input: Object.fromEntries(
-      //   glob
-      //     .sync("lib/**/*.{ts,tsx}", {
-      //       ignore: ["lib/**/*.d.ts"],
-      //     })
-      //     .map((file) => [
-      //       relative("lib", file.slice(0, file.length - extname(file).length)),
-      //       fileURLToPath(new URL(file, import.meta.url)),
-      //     ]),
-      // ),
+    rolldownOptions: {
+      external: [...Object.keys([]), "react/jsx-runtime"],
+      input: Object.fromEntries(
+        globSync("lib/**/*.{ts,tsx}", {
+          exclude: ["lib/**/*.d.ts"],
+        }).map((file) => [
+          relative("lib", file.slice(0, file.length - extname(file).length)),
+          fileURLToPath(new URL(file, import.meta.url)),
+        ]),
+      ),
       output: {
         assetFileNames: "assets/[name][extname]",
         entryFileNames: "[name].js",

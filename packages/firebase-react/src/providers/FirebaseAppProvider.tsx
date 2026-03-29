@@ -1,4 +1,9 @@
-import React, { useContext, useMemo, useRef } from "react";
+import {
+  createContext,
+  type PropsWithChildren,
+  useMemo,
+  useRef,
+} from "react";
 import type { FirebaseApp, FirebaseOptions } from "firebase/app";
 import type { Analytics } from "firebase/analytics";
 import type { FirebasePerformance } from "firebase/performance";
@@ -8,6 +13,7 @@ import type { Auth } from "firebase/auth";
 import type { Database } from "firebase/database";
 import type { Firestore } from "firebase/firestore";
 import { firebaseService } from "@nardole/firebase-core";
+import { useFirebase } from "../hooks/useFirebase.ts";
 
 type FirebaseAppContextValue = {
   app: FirebaseApp;
@@ -20,11 +26,11 @@ type FirebaseAppContextValue = {
   firestore?: Firestore;
 };
 
-export const FirebaseAppContext = React.createContext<
+export const FirebaseAppContext = createContext<
   FirebaseAppContextValue | undefined
 >(undefined);
 
-type FirebaseAppProviderProps = React.PropsWithChildren<{
+type FirebaseAppProviderProps = PropsWithChildren<{
   options: FirebaseOptions;
   name?: string;
   enableAnalytics?: boolean;
@@ -48,7 +54,7 @@ export function FirebaseAppProvider({
   enableFirestore,
   children,
 }: FirebaseAppProviderProps) {
-  const firebase = useContext(FirebaseAppContext);
+  const firebase = useFirebase();
   const optionsRef = useRef<FirebaseOptions>(undefined);
   const nameRef = useRef<string>(undefined);
 
@@ -62,6 +68,8 @@ export function FirebaseAppProvider({
 
     optionsRef.current = options;
     nameRef.current = name;
+
+    console.log(firebaseService);
 
     return {
       app: firebaseService.app,

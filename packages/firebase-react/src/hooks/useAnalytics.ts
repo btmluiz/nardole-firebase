@@ -1,12 +1,11 @@
-import { useContext } from "react";
-import { FirebaseAppContext } from "../providers/FirebaseAppProvider.tsx";
+import { useFirebase } from "./useFirebase.ts";
 
 export function useAnalytics() {
-  const app = useContext(FirebaseAppContext);
+  const value = useFirebase();
 
-  if (!app || !app.analytics) {
+  if (!value || !value.analytics) {
     throw new Error("Analytics is not enabled for this Firebase app");
   }
 
-  return app.analytics;
+  return value.analytics;
 }

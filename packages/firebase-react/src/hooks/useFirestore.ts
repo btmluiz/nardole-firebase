@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { FirebaseAppContext } from "../providers/FirebaseAppProvider.tsx";
+import { useFirebase } from "./useFirebase.ts";
 
 export function useFirestore() {
-  const value = useContext(FirebaseAppContext);
+  const value = useFirebase();
 
   if (!value || value.firestore === undefined) {
     throw new Error(
